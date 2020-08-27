@@ -11,13 +11,14 @@ import {
 } from "react-router-dom";
 import Login from "./components/login/login";
 import Register from "./components/register/register";
-import firebase from "./components/firebase/firebase";
+
 import {createStore} from 'redux'
 import {Provider, connect} from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import RootReducer from './reducers/index'
 import {setUser, outUser, setDisplayChannelList} from './actions/index'
 import Loader from './components/Loader/index'
+import firebase from './components/firebase/firebase';
 
 
 const store = createStore(RootReducer, composeWithDevTools())
@@ -25,7 +26,7 @@ const store = createStore(RootReducer, composeWithDevTools())
 class Root extends React.Component {
 
 state={
-  channelRef: firebase.database().ref('channels'),
+
   dislayedChannels: []
 }
 
@@ -42,25 +43,15 @@ state={
    
     });
 
-    let displayChannelList = []
-    this.state.channelRef
-    .on('child_added', (data)=>{
-        displayChannelList.push(data.val())
-    })
-    
-    
-    if(displayChannelList){
-      this.props.setDisplayChannelList(displayChannelList)
-    }
+ 
 
-    this.setState({dislayedChannels:displayChannelList })
+    
     
   }
 
-  componentWillUnmount () {
-    this.state.channelRef
-    .off()
-  }
+
+
+
 
   render() {
     return this.props.loading ? <Loader/> : (
@@ -75,7 +66,8 @@ state={
 
 const mapStateToProps =(state)=> (
   {
-    loading: state.user.loading
+    loading: state.user.loading,
+    dislayedChannelsinState: state.channels.currentChannelsList
   }
 )
 

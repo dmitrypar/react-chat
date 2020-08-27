@@ -29,3 +29,13 @@ export const outUser = (user) => {
             }
         }
         }
+
+        export const setCurrentChannel = (currentChannel) => {
+            return {
+                type: actionTypes.SET_CURRENT_CHANNEL,
+                payload: {
+                    currentChannel: currentChannel
+                }
+            }
+            }
+    

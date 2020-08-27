@@ -29,6 +29,7 @@ const users_reducer = (state = initionalUserState, action) => {
 const initionalChannelsState = {
   currentChannelsList: null,
   loading: true,
+  currentChannel: ''
 }
 
 const channels_reducer = (state = initionalChannelsState, action) => {
@@ -39,6 +40,15 @@ switch (action.type) {
       currentChannelsList: action.payload.currentChannelsList,
       loading: false,
     };
+    case actionTypes.SET_CURRENT_CHANNEL:
+      return {
+        ...state,
+        currentChannel: action.payload.currentChannel,
+        loading: false,
+      };
+  
+    
+      
 
 
   default:
