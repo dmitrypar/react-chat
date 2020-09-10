@@ -39,3 +39,23 @@ export const outUser = (user) => {
             }
             }
     
+
+
+    // message actions
+
+    export const setLoadedMessage = (message) => {
+        return {
+            type: actionTypes.SET_LOADED_MESSAGE,
+            payload: {
+                loadedMessages: message
+            }
+        }
+        }
+        
+
+        export const resettoloadedMessages = () => {
+            return {
+                type: actionTypes.RESET_LOADING_MESSAGE,
+              
+            }
+            }

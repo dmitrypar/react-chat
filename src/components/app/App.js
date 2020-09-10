@@ -11,17 +11,20 @@ function App(props) {
     <div>
       <div className="container">
         <div className="row">
-          <div className="col-4 colorPanel toFullHeight">
-            <UserPanel currentUser={props.currentUser} />
-            <Channels
-              currentUser={props.currentUser}
-              setDisplayChannelList={props.setDisplayChannelList}
-            />
+          <div className="col-4 colorPanel toFullHeight ">
+            <div className="userPanelGroup ">
+              <UserPanel currentUser={props.currentUser} />
+              <Channels
+                currentUser={props.currentUser}
+                setDisplayChannelList={props.setDisplayChannelList}
+              />
+            </div>
           </div>
           <div className="col-8 sendMessageMain">
-            <MessagePanel 
-             currentChannel={props.currentChannel}
-             currentUser={props.currentUser}/>
+            <MessagePanel
+              currentChannel={props.currentChannel}
+              currentUser={props.currentUser}
+            />
           </div>
         </div>
       </div>
@@ -31,7 +34,7 @@ function App(props) {
 
 const mapStatetoProps = (state) => ({
   currentUser: state.user.currentUser,
-  currentChannel: state.channels.currentChannel
+  currentChannel: state.channels.currentChannel,
 });
 
 export default connect(mapStatetoProps, { setDisplayChannelList })(App);

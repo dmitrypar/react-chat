@@ -1,3 +1,4 @@
+// login
 import React from "react";
 import "./login.css";
 import firebase from "./../firebase/firebase";
@@ -15,6 +16,7 @@ class Login extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  // user autorisation
   onHandleSubmit = (e) => {
     console.log(this.state.email && this.state.password);
     e.preventDefault();
@@ -23,9 +25,7 @@ class Login extends React.Component {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.state.email, this.state.password)
-        .then((loggedUser) => {
-          console.log(loggedUser);
-        })
+        .then((loggedUser) => {})
         .catch((err) => {
           console.log(err);
           this.setState({
@@ -97,10 +97,11 @@ class Login extends React.Component {
                     disabled={loadingData}
                     className="btn btn-info btn-block"
                   />
-                  <div className={'checkloginOrregister'}>
-Need to register? Please sign in <Link to={'/register'}>register</Link>
+                  <div className={"checkloginOrregister"}>
+                    Need to register? Please sign in{" "}
+                    <Link to={"/register"}>register</Link>
                   </div>
-                  
+
                   <div className="form-group errorbox">
                     {errors.length > 0 && <div> Error </div>}
                     {errors.map((error, i) => (

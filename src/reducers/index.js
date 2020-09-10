@@ -48,22 +48,48 @@ switch (action.type) {
       };
   
     
-      
+  default:
+    return state;
+}
+};
 
+const initionalMessagesState = {
+  loadedMessages: [],
+  messagesLoading: true,
+  
+}
 
+const messages_reducer = (state = initionalMessagesState, action) => {
+switch (action.type) {
+  case actionTypes.SET_LOADED_MESSAGE:
+    return {
+      ...state,
+      loadedMessages: action.payload.loadedMessages,
+      messagesLoading: false,
+    };
+    case actionTypes.RESET_LOADING_MESSAGE:
+      return {
+        ...state,
+        loadedMessages: [],
+        messagesLoading: true,
+      };
+
+    
+    
   default:
     return state;
 }
 };
 
 
-
-
+//
 
 const RootReducer = combineReducers({
 
     user: users_reducer,
-    channels: channels_reducer
+    channels: channels_reducer,
+    messages: messages_reducer
+   
 })
 
 export default RootReducer

@@ -11,50 +11,37 @@ import {
 } from "react-router-dom";
 import Login from "./components/login/login";
 import Register from "./components/register/register";
+import { createStore } from "redux";
+import { Provider, connect } from "react-redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import RootReducer from "./reducers/index";
+import { setUser, outUser, setDisplayChannelList } from "./actions/index";
+import Loader from "./components/Loader/index";
+import firebase from "./components/firebase/firebase";
 
-import {createStore} from 'redux'
-import {Provider, connect} from 'react-redux'
-import { composeWithDevTools } from 'redux-devtools-extension';
-import RootReducer from './reducers/index'
-import {setUser, outUser, setDisplayChannelList} from './actions/index'
-import Loader from './components/Loader/index'
-import firebase from './components/firebase/firebase';
-
-
-const store = createStore(RootReducer, composeWithDevTools())
+const store = createStore(RootReducer, composeWithDevTools());
 
 class Root extends React.Component {
-
-state={
-
-  dislayedChannels: []
-}
+  state = {
+    dislayedChannels: [],
+  };
 
   componentDidMount(props) {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.props.history.push('/');
-        this.props.setUser(user)
+        this.props.history.push("/");
+        this.props.setUser(user);
       } else {
-        this.props.history.push('/login');
-        this.props.outUser(user)
+        this.props.history.push("/login");
+        this.props.outUser(user);
       }
-      
-   
     });
-
- 
-
-    
-    
   }
 
-
-
-
-
   render() {
-    return this.props.loading ? <Loader/> : (
+    return this.props.loading ? (
+      <Loader />
+    ) : (
       <Switch>
         <Route exact path={"/"} component={App} />
         <Route path={"/login"} component={Login} />
@@ -64,22 +51,22 @@ state={
   }
 }
 
-const mapStateToProps =(state)=> (
-  {
-    loading: state.user.loading,
-    dislayedChannelsinState: state.channels.currentChannelsList
-  }
-)
+const mapStateToProps = (state) => ({
+  loading: state.user.loading,
+  dislayedChannelsinState: state.channels.currentChannelsList,
+});
 
-const RootWithRouter = withRouter(connect(mapStateToProps, {setUser, outUser, setDisplayChannelList})(Root));
+const RootWithRouter = withRouter(
+  connect(mapStateToProps, { setUser, outUser, setDisplayChannelList })(Root)
+);
 
 export default Root;
 
 ReactDOM.render(
   <Provider store={store}>
-  <Router>
-    <RootWithRouter />
-  </Router>
+    <Router>
+      <RootWithRouter />
+    </Router>
   </Provider>,
   document.getElementById("root")
 );

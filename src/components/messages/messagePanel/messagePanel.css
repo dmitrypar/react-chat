@@ -1,5 +1,9 @@
 .displayMain {
     height: 550px;
     overflow-y: scroll;
+    margin: 0;
    
+}
+.sendPanelContainer{
+    margin-top: 0;
 }

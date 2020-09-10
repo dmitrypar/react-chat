@@ -5,7 +5,7 @@ const HeaderMessagePanel = (params) => {
     return (
 <div className="container ">
   <div className="row">
-  <div style={{marginTop: '2em'}}
+  {/* <div style={{marginTop: '2em'}}
   className="input-group mb-3 col-12">
         <input
           type="text"
@@ -19,7 +19,7 @@ const HeaderMessagePanel = (params) => {
            Search
           </button>
         </div>
-      </div>
+      </div> */}
   </div>
 </div>
     )

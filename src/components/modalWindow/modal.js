@@ -1,3 +1,4 @@
+// modal window for new channel creating
 import React from "react";
 import firebase from "./../firebase/firebase";
 
@@ -10,16 +11,7 @@ class Modal extends React.Component {
     dislayedChannels: [],
   };
 
-  componentDidMount = () => {
-    //  let displayChannelList = []
-    // this.state.channelRef
-    // .on('child_added', (data)=>{
-    //     displayChannelList.push(data.val())
-    //     this.setState({dislayedChannels:displayChannelList })
-    // })
-    //this.props.setDisplayChannelList(this.props.displayChannelList)
-  };
-
+  // set input channel data in state
   inputHandler = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -29,9 +21,11 @@ class Modal extends React.Component {
   validData = ({ channelName, channelDescription }) =>
     channelName && channelDescription;
 
+  // create and writes new channel data in database
   newChannelCreate = () => {
     const { channelName, channelDescription, channelRef, user } = this.state;
     const key = channelRef.push().key;
+    // new channel template
     const newChannel = {
       id: key,
       name: channelName,
@@ -50,10 +44,10 @@ class Modal extends React.Component {
           channelName: "",
           channelDescription: "",
         });
-        console.log("chanel added");
       });
   };
 
+  // create new channel
   submitHandler = (e) => {
     e.preventDefault();
     if (this.validData(this.state)) {
@@ -121,10 +115,6 @@ class Modal extends React.Component {
                 >
                   Close
                 </button>
-
-                {/* {this.state.dislayedChannels.map((c)=>{
-            return <button>{c.name}</button>
-            })} */}
                 <button
                   type="button"
                   className="btn btn-primary"

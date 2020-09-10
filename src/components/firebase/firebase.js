@@ -6,7 +6,7 @@ import 'firebase/storage';
 
 
 
-  // Your web app's Firebase configuration
+  //  web app's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyB9PwfkkN0k1P728YX40EP1J7gXxzrJSrM",
     authDomain: "react-chat-1008.firebaseapp.com",

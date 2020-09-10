@@ -1,5 +1,10 @@
+
+
 .colorPanel {
     background-color: rgba(153, 192, 188, 0.5);
+    height: 550px;
+
+   
 }
 
 .toFullHeight {
@@ -8,4 +13,7 @@
 
 .sendMessageMain {
     background-color: rgba(220, 233, 232, 0.2);
+}
+.userPanelGroup{
+    margin-top: 2em;
 }
