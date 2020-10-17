@@ -1,11 +1,11 @@
 // input field and sent button in bottom message panel
 import React from "react";
-import  './messageSendPanel.css'
+
 
 const MessageSendPanel = (props) => {
   return (
-<div className="container sendPanelContainer">
-  <div className="row">
+<div className="container sendPanelContainer ">
+  <div className="row ">
   <div className="input-group mb-3 col" style={{marginTop: '2em'}}>
       <input
         type="text"

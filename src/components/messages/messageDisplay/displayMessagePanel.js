@@ -1,6 +1,5 @@
 // displays message field
 import React from "react";
-import "./displayMessagePanel.css";
 import MessageBody from "./../messageBody/messageBody";
 
 const DisplayMessagePanel = (props) => {

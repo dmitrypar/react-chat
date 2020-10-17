@@ -1,63 +1,13 @@
-// modal window for new channel creating
-import React from "react";
-import firebase from "./../firebase/firebase";
+import React from 'react'
 
-class Modal extends React.Component {
-  state = {
-    user: this.props.currentUser,
-    channelName: "",
-    channelDescription: "",
-    channelRef: firebase.database().ref("channels"),
-    dislayedChannels: [],
-  };
-
-  // set input channel data in state
-  inputHandler = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  validData = ({ channelName, channelDescription }) =>
-    channelName && channelDescription;
-
-  // create and writes new channel data in database
-  newChannelCreate = () => {
-    const { channelName, channelDescription, channelRef, user } = this.state;
-    const key = channelRef.push().key;
-    // new channel template
-    const newChannel = {
-      id: key,
-      name: channelName,
-      description: channelDescription,
-      created: {
-        name: user.displayName,
-        avatar: user.photoURL,
-      },
-    };
-
-    channelRef
-      .child(key)
-      .update(newChannel)
-      .then(() => {
-        this.setState({
-          channelName: "",
-          channelDescription: "",
-        });
-      });
-  };
-
-  // create new channel
-  submitHandler = (e) => {
-    e.preventDefault();
-    if (this.validData(this.state)) {
-      this.newChannelCreate();
-    }
-  };
-
-  render() {
+const Modal = ({
+    submitHandler,
+    inputHandler,
+    setDisplayChannelList,
+    dislayedChannels
+}) => {
     return (
-      <div>
+        <div>
         <div
           className="modal fade"
           id="exampleModal"
@@ -82,14 +32,14 @@ class Modal extends React.Component {
               </div>
 
               <div className="modal-body">
-                <form onSubmit={this.submitHandler}>
+                <form onSubmit={submitHandler}>
                   <div className="form-group">
                     <label className="col-form-label">Название:</label>
                     <input
                       type="text"
                       className="form-control"
                       name="channelName"
-                      onChange={this.inputHandler}
+                      onChange={inputHandler}
                     />
                   </div>
                   <div className="form-group">
@@ -97,7 +47,7 @@ class Modal extends React.Component {
                     <textarea
                       className="form-control"
                       name="channelDescription"
-                      onChange={this.inputHandler}
+                      onChange={inputHandler}
                     ></textarea>
                   </div>
                 </form>
@@ -108,27 +58,26 @@ class Modal extends React.Component {
                   className="btn btn-secondary"
                   data-dismiss="modal"
                   onClick={() =>
-                    this.props.setDisplayChannelList(
-                      this.state.dislayedChannels
+                    setDisplayChannelList(
+                      dislayedChannels
                     )
                   }
                 >
-                  Close
+                  Закрыть
                 </button>
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={this.submitHandler}
+                  onClick={submitHandler}
                 >
-                  Send message
+                  Создать канал
                 </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    );
-  }
+    )
 }
 
-export default Modal;
+export default Modal

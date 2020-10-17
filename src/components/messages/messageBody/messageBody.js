@@ -1,6 +1,5 @@
 // general message view
 import React, { useState } from "react";
-import "./messageBody.css";
 import moment from "moment";
 
 const MessageBody = (props) => {
@@ -76,7 +75,6 @@ const MessageBody = (props) => {
   //switch on trigger for text aria displayng
   const onEditCliked = (id) => {
     setMessageTransformToForm(true);
-    console.log("id", id);
   };
 
   return (

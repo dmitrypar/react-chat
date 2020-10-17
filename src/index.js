@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./components/app/App";
+import App from "./app/app";
 import * as serviceWorker from "./serviceWorker";
 import {
   BrowserRouter as Router,
@@ -9,15 +8,15 @@ import {
   Route,
   withRouter,
 } from "react-router-dom";
-import Login from "./components/login/login";
-import Register from "./components/register/register";
+import LoginContainer from "./pages/login/loginContainer";
+import RegisterContainer from "./pages/register/registerContainer";
 import { createStore } from "redux";
 import { Provider, connect } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import RootReducer from "./reducers/index";
-import { setUser, outUser, setDisplayChannelList } from "./actions/index";
-import Loader from "./components/Loader/index";
-import firebase from "./components/firebase/firebase";
+import RootReducer from "./redux/reducers/index";
+import { setUser, outUser, setDisplayChannelList } from "./redux/actions/index";
+import Loader from "./components/loader/index";
+import firebase from "./firebase/firebase";
 
 const store = createStore(RootReducer, composeWithDevTools());
 
@@ -44,8 +43,8 @@ class Root extends React.Component {
     ) : (
       <Switch>
         <Route exact path={"/"} component={App} />
-        <Route path={"/login"} component={Login} />
-        <Route path={"/register"} component={Register} />
+        <Route path={"/login"} component={LoginContainer} />
+        <Route path={"/register"} component={RegisterContainer} />
       </Switch>
     );
   }

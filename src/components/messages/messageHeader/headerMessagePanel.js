@@ -1,5 +1,5 @@
 import React from 'react'
-import './headerMessagePanel.css'
+
 
 const HeaderMessagePanel = (params) => {
     return (

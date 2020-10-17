@@ -1,3 +1,62 @@
+
+// App
+
+.colorPanel {
+    background-color: rgba(153, 192, 188, 0.5);
+    height: 100%;
+}
+
+.toFullHeight {
+    height: auto;
+}
+
+.sendMessageMain {
+    background-color: rgba(220, 233, 232, 0.2);
+}
+.userPanelGroup{
+    margin-top: 2em;
+}
+
+// channels
+
+.addChannel {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+    width: 2.5em;
+}
+
+ .selected {
+font-weight: bold;
+}
+
+// userPanel
+
+.avatar {
+    width: 25px;
+    margin-right: 5px;
+    border-radius: 8px
+}
+
+//displayMessagePanel
+
+.displayPanel {
+    margin-top: 1em;
+}
+
+//messagePanel
+
+.displayMain {
+    height: 50em;
+    overflow-y: scroll;
+    margin: 0;
+}
+.sendPanelContainer{
+    margin-top: 0;
+}
+
+// messageBody
+
 .message {
     background-color: lightblue;
     border-radius: 0.5em;
@@ -63,3 +122,20 @@
 .editMessageMode {
     margin: 0.5em 0 0 0.25em ;
 }
+
+
+// messageSendPanel
+
+// .sendPanelContainer {
+//     margin-top: 1em; 
+//     margin-bottom: 1.5em; 
+// }
+
+// headerMessagePanel
+
+// .headerMain {
+  
+// }
+
+
+

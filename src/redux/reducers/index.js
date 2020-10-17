@@ -11,6 +11,7 @@ const users_reducer = (state = initionalUserState, action) => {
   switch (action.type) {
     case actionTypes.SET_USER:
       return {
+        ...state,
         currentUser: action.payload.currentUser,
         loading: false,
       };

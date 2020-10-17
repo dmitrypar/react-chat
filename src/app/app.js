@@ -1,10 +1,10 @@
 import React from "react";
-import "./App.css";
-import UserPanel from "./../colorpanel/userPanel/userPanel";
+import "./../sass/main.scss";
+import UserPanelContainer from "../components/colorpanel/userPanel/userPanelContainer";
 import { connect } from "react-redux";
-import Channels from "./../colorpanel/chanels/channels";
-import { setDisplayChannelList } from "./../../actions/index";
-import MessagePanel from "./../messages/messagePanel/messagePanel";
+import ChannelsContainer from "../components/colorpanel/channels/channelsContainer";
+import { setDisplayChannelList } from "../redux/actions/index";
+import MessagePanelContainer from "../components/messages/messagePanel/messagePanelContainer";
 
 function App(props) {
   return (
@@ -13,15 +13,15 @@ function App(props) {
         <div className="row">
           <div className="col-4 colorPanel toFullHeight ">
             <div className="userPanelGroup ">
-              <UserPanel currentUser={props.currentUser} />
-              <Channels
+              <UserPanelContainer currentUser={props.currentUser} />
+              <ChannelsContainer
                 currentUser={props.currentUser}
                 setDisplayChannelList={props.setDisplayChannelList}
               />
             </div>
           </div>
           <div className="col-8 sendMessageMain">
-            <MessagePanel
+            <MessagePanelContainer
               currentChannel={props.currentChannel}
               currentUser={props.currentUser}
             />
